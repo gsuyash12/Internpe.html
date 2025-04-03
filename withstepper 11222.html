@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <title>InternPe Account Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-purple-100 to-yellow-50">
+  <!-- Nav -->
+  <nav>
+    <div class="flex justify-between items-center px-6 py-4 ">
+      <!-- Search Box -->
+      <div class="flex items-center justify-center w-full max-w-md max-w-md">
+        <input 
+          type="text" 
+          placeholder="Search..." 
+          class="w-full p-3 text-gray-800 border border-gray-300 rounded-l-l"/>
+        <button class="text-gray-600 bg-purple-300 px-4 py-3 rounded-r hover:text-purple-100">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+      <div class="flex space-x-4">
+        <button class="flex items-center space-x-1">
+          <i class="fa-regular fa-user"></i>
+          <span class="hover:text-purple-400">Login</span>
+        </button>
+        <button class="flex items-center space-x-1">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="hover:text-purple-400">Cart</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Section -->
+  <main class="flex justify-center items-center mt-16 pb-8">
+    <div class="w-full max-w-lg p-6 bg-white shadow-lg">
+
+      <!-- Form -->
+     <!-- <form id="step-1-form" class="space-y-3">
+        <h2 class="pt-4 text-xl font-bold text-gray-600 text-center">Verification</h2>
+        <div>
+          <label for="email" class="block text-gray-700">Email ID</label>
+          <input 
+            type="text"
+            id="email"
+            placeholder="Enter your Email ID"
+            class="w-full p-3 text-gray-800 border border-gray-300 rounded-lg"/>
+        </div>
+        <button
+          id="verify-email-button"
+          type="button"
+          class="w-full py-3 bg-purple-300 text-white text-lg rounded-lg hover:bg-purple-400 focus:ring-2">
+          verify email
+        </button>
+      </form>-->
+
+      <!-- Step 2 Form -->
+      <form>
+        <h2 class="pt-4 text-xl font-bold text-gray-600 text-center">Create Account</h2>
+          <div>
+          <label for="name" class="block text-gray-700">Name</label>
+          <input 
+            type="text"
+            id="name"
+            placeholder="Enter your Name"
+            class="w-full p-3 mb-3 text-gray-800 border border-gray-300 rounded-lg"/>
+        </div>
+        <div>
+          <label for="mobile" class="block text-gray-700">Mobile No.</label>
+          <input 
+            type="text"
+            id="mobile"
+            placeholder="+91"
+            class="w-full p-3 text-gray-800 border border-gray-300 rounded-lg"/>
+        </div>
+        <div>
+            <label for="password" class="block text-gray-700">Password</label>
+            <input 
+              type="password"
+              id="password"
+              placeholder="Enter your Password"
+              class="w-full p-3 text-gray-800 border border-gray-300 rounded-lg"/>
+          </div>
+
+        <!-- <div>
+          <label for="current-password" class="block text-gray-700">Current Password</label>
+          <input 
+            type="password"
+            id="current-password"
+            placeholder="Enter Current Password"
+            class="w-full p-3 text-gray-800 border border-gray-300 rounded-lg"/>
+        </div>
+        <div>
+          <label for="new-password" class="block text-gray-700">New Password</label>
+          <input 
+            type="password"
+            id="new-password"
+            placeholder="Enter New Password"
+            class="w-full p-3 text-gray-800 border border-gray-300 rounded-lg"/>
+        </div>
+        <div>
+          <label for="confirm-password" class="block text-gray-700">Confirm Password</label>
+          <input 
+            type="password"
+            id="confirm-password"
+            placeholder="Confirm New Password"
+            class="w-full p-3 text-gray-800 border border-gray-300 rounded-lg"/>
+        </div>
+        <button
+          type="submit"
+          class="w-full py-3 bg-purple-300 text-white text-lg rounded-lg hover:bg-purple-400 focus:ring-2">
+          Change Password
+        </button> -->
+            <div id="address-fields">
+              <div class="address-group">
+              <label class="block text-gray-700 mb-1" for="address-1">Address</label>
+              <input 
+              id="address-1"
+              type="text" 
+              placeholder="Enter Your address (Pincode, Town, City, State)"
+              class="w-full p-3 text-gray-800 border border-gray-300 rounded-lg"/>
+              </div>
+          </div>
+            <button
+            type="button"
+            id="add-address"
+            class="text-gray-400 underline hover:text-purple-400">add another Address +</button>
+            <br></br>
+            <button
+              type="submit"
+              class="w-full py-3 bg-purple-300 text-white text-lg rounded-lg hover:bg-purple-400 focus:ring-2">
+              Create Account
+            </button>
+       </form>
+    </div>
+  </main>
+
+  <script>
+    // Add Another Address
+  const addressFields = document.getElementById('address-fields');
+  const addAddressButton = document.getElementById('add-address');
+  let addressCount = 1;
+
+  addAddressButton.addEventListener('click', () => {
+    addressCount++;
+    const newAddressGroup = document.createElement('div');
+    newAddressGroup.className = 'address-group';
+    newAddressGroup.innerHTML = `
+      <label class="block text-gray-600 mb-1" for="address-${addressCount}">Address</label>
+      <input 
+        id="address-${addressCount}" 
+        type="text" 
+        class="w-full p-2 border rounded-lg mb-2" />
+    `;
+    addressFields.appendChild(newAddressGroup);
+  });
+    const step1Form = document.getElementById('step-1-form');
+    const step2Form = document.getElementById('step-2-form');
+    const step3Form = document.getElementById('step-3-form');
+    const step1Indicator = document.getElementById('step-1-indicator');
+    const step2Indicator = document.getElementById('step-2-indicator');
+    const step3Indicator = document.getElementById('step-3-indicator');
+    const verifyemailbutton = document.getElementById('verify-email-button');
+    const createaccountbutton = document.getElementById('create-account-button');
+
+    // step 1 to 2
+      verifyemailbutton.addEventListener('click', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+
+      if ( !email) {
+        alert('Please fill in your email.');
+        return;
+      }
+
+      step2Form.classList.remove('hidden');
+      step1Form.classList.add('hidden');
+      step2Indicator.classList.remove('opacity-30');
+      step1Indicator.classList.add('opacity-30');
+      });
+    // step 2 to 3
+    createaccountbutton.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+     const password = document.getElementById('password').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+        
+     if (!name|| !password ||!mobile) {
+     alert('Please fill in all fields');
+     return;
+     }
+    step3Form.classList.remove('hidden');
+    step2Form.classList.add('hidden');
+    step3Indicator.classList.remove('opacity-30');
+    step2Indicator.classList.add('opacity-30');
+    });
+  </script>
+</body>
+</html>
